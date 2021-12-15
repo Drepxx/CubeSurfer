@@ -23,7 +23,7 @@ public class Barrier : MonoBehaviour
             else
             {
                 CubeManager.instance.Remove(other.gameObject);
-                CameraScript.instance.offset= new Vector3(CameraScript.instance.offset.x + 0.5f, CameraScript.instance.offset.y - 0.5f, CameraScript.instance.offset.z + 0.1f);
+                CameraScript.instance.MoveClose();
             }
         }
 

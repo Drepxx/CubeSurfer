@@ -19,7 +19,7 @@ public class CollectibleCubes : MonoBehaviour
         {
             CubeManager.instance.Add(gameObject);
             isDone = true;
-            CameraScript.instance.offset = new Vector3(CameraScript.instance.offset.x - 0.5f, CameraScript.instance.offset.y + 0.5f, CameraScript.instance.offset.z - 0.1f);
+            CameraScript.instance.MoveAway();
             
         }
 

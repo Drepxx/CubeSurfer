@@ -28,7 +28,6 @@ public class CubeManager : MonoBehaviour
             totalCount += count;
             Player.instance.horizontalSpeed = 1;
             isObjectExit = false;
-            Debug.Log(playerParent.transform.childCount);
             count = 0;
         }
     }
@@ -51,6 +50,7 @@ public class CubeManager : MonoBehaviour
     {
         Player.instance.horizontalSpeed = 0;
         stoppedCube.transform.SetParent(null);
+        Destroy(stoppedCube, 1f);
         stoppedCube.tag = ("Untagged");
         cubes.Remove(stoppedCube);
         count++;
