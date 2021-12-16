@@ -38,11 +38,21 @@ public class CubeManager : MonoBehaviour
     }
     public void Add(GameObject collectedCube)
     {
-        collectedCube.transform.tag = ("Player");
-        cubes.Add(collectedCube);
-        collectedCube.transform.SetParent(playerParent.transform);
-        collectedCube.transform.position = new Vector3(Player.instance.transform.position.x, Player.instance.transform.position.y - cubes.Count - totalCount, Player.instance.transform.position.z);
-        playerParent.transform.DOMoveY(playerParent.transform.position.y + 1, 0.2f);
+        int childCount = collectedCube.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Debug.Log(i);
+            collectedCube.transform.GetChild(0).transform.tag = ("Player");
+            cubes.Add(collectedCube.transform.GetChild(0).gameObject);
+            collectedCube.transform.GetChild(0).position= new Vector3(Player.instance.transform.position.x, Player.instance.transform.position.y - cubes.Count - totalCount, Player.instance.transform.position.z);
+            collectedCube.transform.GetChild(0).SetParent(playerParent.transform);
+            if (i==childCount-1)
+            {
+                Destroy(collectedCube);
+            }
+        }
+        playerParent.transform.DOMoveY(playerParent.transform.position.y + childCount, 0.2f);
+        
     }
     public int count = 0;
     public bool isObjectExit;

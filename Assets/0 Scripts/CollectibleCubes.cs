@@ -11,7 +11,11 @@ public class CollectibleCubes : MonoBehaviour
     private void Start()
     {
         instance = this;
-        CubeManager.instance.Color(gameObject);
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            CubeManager.instance.Color(gameObject.transform.GetChild(i).gameObject);
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +24,6 @@ public class CollectibleCubes : MonoBehaviour
             CubeManager.instance.Add(gameObject);
             isDone = true;
             CameraScript.instance.MoveAway();
-            
         }
-
     }
 }
