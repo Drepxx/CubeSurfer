@@ -5,11 +5,13 @@ using DG.Tweening;
 
 public class CubeManager : MonoBehaviour
 {
+    [HideInInspector]
     public Texture[] texture = new Texture[3];
     public List<GameObject> cubes = new();
     public static CubeManager instance;
-    // public GameObject SpawnCube;
+    [HideInInspector]
     public GameObject playerParent;
+    [HideInInspector]
     public int totalCount = 0;
 
     public void Awake()
@@ -54,7 +56,9 @@ public class CubeManager : MonoBehaviour
         playerParent.transform.DOMoveY(playerParent.transform.position.y + childCount, 0.2f);
         
     }
+    [HideInInspector]
     public int count = 0;
+    [HideInInspector]
     public bool isObjectExit;
     public void Remove(GameObject stoppedCube)
     {

@@ -10,7 +10,6 @@ public class CameraScript : MonoBehaviour
     private void Start()
     {
         instance = this;
-        //offset = new Vector3(-10, 5, -2);
         offset = new Vector3(-4, 4, -1.6f) ;
     }
     void Update()
@@ -23,9 +22,9 @@ public class CameraScript : MonoBehaviour
         Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smooth);
         transform.position = SmoothedPosition;
     }
-    public void MoveAway()
+    public void MoveAway(int childCount)
     {
-        offset += Vector3.up * 0.2f + Vector3.left * 1f;
+        offset += Vector3.up * 0.2f*childCount + Vector3.left * 1f*childCount;
     }
     public void MoveClose()
     {

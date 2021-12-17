@@ -21,9 +21,9 @@ public class CollectibleCubes : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && isDone == false)
         {
+            CameraScript.instance.MoveAway(gameObject.transform.childCount);
             CubeManager.instance.Add(gameObject);
             isDone = true;
-            CameraScript.instance.MoveAway();
         }
     }
 }

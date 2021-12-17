@@ -4,14 +4,18 @@ using UnityEngine;
 using DG.Tweening;
 public class FinishLine : MonoBehaviour
 {
+    public ParticleSystem particle;
     // Start is called before the first frame update
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("aa");
             Player.instance.speed = 0;
+            Instantiate(particle,new Vector3( CubeManager.instance.playerParent.transform.position.x,0, CubeManager.instance.playerParent.transform.position.z), Quaternion.identity);
+            particle.Play(true);
             StartCoroutine(Wait());
-
+            particle.Stop();
         }
 
 
