@@ -75,8 +75,16 @@ public class CubeManager : MonoBehaviour
         isObjectExit = true;
     }
     public int coinCount = 0;
+    public GameObject coin;
+    public GameObject panel;
+    public Sequence seq;
     public void collectCoin(GameObject collectedCoin)
     {
+        seq = DOTween.Sequence();
         coinCount++;
+       GameObject coinUI= Instantiate(coin, Camera.main.WorldToScreenPoint(collectedCoin.transform.position), panel.transform.rotation, panel.transform);
+        seq.Append(coinUI.transform.DOMove(panel.transform.position, 2));
+        seq.Join(coinUI.transform.DOScale(Vector3.one * 1, 2)).OnComplete(()=> { Destroy(coinUI); });
+        
     }
 }

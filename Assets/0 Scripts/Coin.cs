@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 public class Coin : MonoBehaviour
-{ 
-    /*private void OnTriggerEnter(Collider other)
+{ public bool isDone;
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&&isDone==false)
         {
             CubeManager.instance.collectCoin(gameObject);
-        
-
+            isDone = true;
+            Destroy(gameObject);
         }
-
-    }*/
+    }
 }

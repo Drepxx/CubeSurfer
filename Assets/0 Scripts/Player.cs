@@ -14,12 +14,8 @@ public class Player : MonoBehaviour
     {
         instance = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        slide = CnInputManager.GetAxis("Horizontal");
-
         float horizontal = CnInputManager.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
         transform.Translate(Vector3.back * horizontal);
         if (transform.position.z <= -1.5f)
