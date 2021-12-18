@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class CollectibleCubes : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static CollectibleCubes instance;
     public bool isDone;
     private void Start()
@@ -15,7 +14,6 @@ public class CollectibleCubes : MonoBehaviour
         {
             CubeManager.instance.Color(gameObject.transform.GetChild(i).gameObject);
         }
-        
     }
     private void OnTriggerEnter(Collider other)
     {

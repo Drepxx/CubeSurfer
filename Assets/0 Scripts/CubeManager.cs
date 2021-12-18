@@ -25,7 +25,7 @@ public class CubeManager : MonoBehaviour
         {
             for (int i = playerParent.transform.childCount - 1; i >= 0; i--)
             {
-                playerParent.transform.GetChild(i).transform.DOMoveY(-count, 0.1f * (playerParent.transform.childCount - i)).SetRelative();
+                playerParent.transform.GetChild(i).transform.DOMoveY(-count, 0.03f * (playerParent.transform.childCount - i)).SetRelative();
             }
             totalCount += count;
             Player.instance.horizontalSpeed = 1;
@@ -43,7 +43,6 @@ public class CubeManager : MonoBehaviour
         int childCount = collectedCube.transform.childCount;
         for (int i = 0; i < childCount; i++)
         {
-            Debug.Log(i);
             collectedCube.transform.GetChild(0).transform.tag = ("Player");
             cubes.Add(collectedCube.transform.GetChild(0).gameObject);
             collectedCube.transform.GetChild(0).position= new Vector3(Player.instance.transform.position.x, Player.instance.transform.position.y - cubes.Count - totalCount, Player.instance.transform.position.z);
@@ -74,5 +73,10 @@ public class CubeManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.23f);
         isObjectExit = true;
+    }
+    public int coinCount = 0;
+    public void collectCoin(GameObject collectedCoin)
+    {
+        coinCount++;
     }
 }

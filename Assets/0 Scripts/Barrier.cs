@@ -16,11 +16,12 @@ public class Barrier : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && isDone == false)
         {
             Player player = other.gameObject.GetComponent<Player>();
-            if (player!=null)
+            if (other.gameObject.transform.name=="Player")
             {
                 Player.instance.speed = 0;
+                Player.instance.horizontalSpeed = 0;
             }
-            else
+            else if (Player.instance.speed!=0)
             {
                 CubeManager.instance.Remove(other.gameObject);
                 CameraScript.instance.MoveClose();
