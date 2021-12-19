@@ -10,7 +10,11 @@ public class FinishLine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && isDone==false)
         {
+            PlayerPrefs.SetInt("Cube", CubeManager.instance.cubes.Count);
+            PlayerPrefs.SetInt("Coin", CubeManager.instance.coinCount);
+            PlayerPrefs.Save();
             Player.instance.speed = 0;
+            Player.instance.horizontalSpeed = 0;
             GameObject spawnedParticle=Instantiate(particle,new Vector3( CubeManager.instance.playerParent.transform.position.x,0, CubeManager.instance.playerParent.transform.position.z), Quaternion.identity);
             isDone = true;
             StartCoroutine(Wait(spawnedParticle));

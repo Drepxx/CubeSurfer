@@ -20,8 +20,9 @@ public class Barrier : MonoBehaviour
             {
                 Player.instance.speed = 0;
                 Player.instance.horizontalSpeed = 0;
+                CubeManager.instance.GameOver();
             }
-            else if (Player.instance.speed!=0)
+            else if (Player.instance.speed!=0&&other.gameObject.transform.name!="GameObject")
             {
                 CubeManager.instance.Remove(other.gameObject);
                 CameraScript.instance.MoveClose();

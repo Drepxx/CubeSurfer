@@ -7,6 +7,7 @@ public class CubeManager : MonoBehaviour
 {
     [HideInInspector]
     public Texture[] texture = new Texture[3];
+    public GameObject gameOver;
     public List<GameObject> cubes = new();
     public static CubeManager instance;
     [HideInInspector]
@@ -86,5 +87,11 @@ public class CubeManager : MonoBehaviour
         seq.Append(coinUI.transform.DOMove(panel.transform.position, 2));
         seq.Join(coinUI.transform.DOScale(Vector3.one * 1, 2)).OnComplete(()=> { Destroy(coinUI); });
         
+    }
+    public void GameOver()
+    {
+        GameObject goldUI = GameObject.Find("UI");
+        goldUI.SetActive(false);
+        gameOver.SetActive(true);
     }
 }

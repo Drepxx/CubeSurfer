@@ -1,33 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using CnControls;
 
 
 public class Player : MonoBehaviour
 {
+    
+    public GameObject panel;
     public static Player instance;
     public int speed;
     public float horizontalSpeed;
+    [HideInInspector]
     public float slide;
+    [HideInInspector]
+    public bool isSlide;
     void Start()
     {
         instance = this;
     }
     void Update()
     {
-        float horizontal = CnInputManager.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
-        transform.Translate(Vector3.back * horizontal);
-        if (transform.position.z <= -1.5f)
+        slide = CnInputManager.GetAxis("Vertical");
+        if (slide!=0)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1.5f);
+            Slide();
         }
-        else if (transform.position.z >= 1.5f)
+        if (isSlide==true||transform.position!=Vector3.zero)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 1.5f);
+            float horizontal = CnInputManager.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
+            transform.Translate(Vector3.back * horizontal);
+            if (transform.position.z <= -1.5f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -1.5f);
+            }
+            else if (transform.position.z >= 1.5f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 1.5f);
+            }
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-
+    }
+    public void Slide()
+    {
+        isSlide = true;
+        panel.SetActive(true);
     }
 }
