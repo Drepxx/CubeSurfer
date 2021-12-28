@@ -5,12 +5,12 @@ using DG.Tweening;
 
 public class CubeManager : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public Texture[] texture = new Texture[3];
     public GameObject gameOver;
     public List<GameObject> cubes = new();
     public static CubeManager instance;
-    [HideInInspector]
+   // [HideInInspector]
     public GameObject playerParent;
     [HideInInspector]
     public int totalCount = 0;
@@ -32,6 +32,10 @@ public class CubeManager : MonoBehaviour
             Player.instance.horizontalSpeed = 1;
             isObjectExit = false;
             count = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
     }
     public void Color(GameObject textureCube)
@@ -79,13 +83,13 @@ public class CubeManager : MonoBehaviour
     public GameObject coin;
     public GameObject panel;
     public Sequence seq;
-    public void collectCoin(GameObject collectedCoin)
+    public void CollectCoin(GameObject collectedCoin)
     {
         seq = DOTween.Sequence();
         coinCount++;
        GameObject coinUI= Instantiate(coin, Camera.main.WorldToScreenPoint(collectedCoin.transform.position), panel.transform.rotation, panel.transform);
         seq.Append(coinUI.transform.DOMove(panel.transform.position, 2));
-        seq.Join(coinUI.transform.DOScale(Vector3.one * 1, 2)).OnComplete(()=> { Destroy(coinUI); });
+        seq.Join(coinUI.transform.DOScale(Vector3.one * 0.45f, 2)).OnComplete(()=> { Destroy(coinUI); });
         
     }
     public void GameOver()
@@ -94,4 +98,5 @@ public class CubeManager : MonoBehaviour
         goldUI.SetActive(false);
         gameOver.SetActive(true);
     }
+
 }

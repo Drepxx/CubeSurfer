@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     void Awake()
     {
-      //  Instantiate(Resources.Load("Level" + currentLevel));
+        PlayerPrefs.GetInt("Level", 0);
+    }
+    private void Start()
+    {
+       
     }
 }

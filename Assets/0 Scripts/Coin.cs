@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")&&isDone==false)
         {
-            CubeManager.instance.collectCoin(gameObject);
+            CubeManager.instance.CollectCoin(gameObject);
             isDone = true;
             Destroy(gameObject);
         }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     public bool testMode;
     [Header("Son Levelin Tam Sayisi")]
     public int levelCount = 9;
@@ -13,19 +14,22 @@ public class LevelManager : MonoBehaviour
     public int randomMax = 10;
     public Text levelText;
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void Start()
     {
         if (!testMode) OpenCurrentLevel();
+        
     }
 
 
 
     private void OpenCurrentLevel()
     {
-        int currentLevel = PlayerPrefs.GetInt("Level", 0);
-        levelText.text = "Level " + (currentLevel + 1).ToString();
+        int currentLevel = PlayerPrefs.GetInt("Level",0);
         if (currentLevel > levelCount)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
@@ -36,6 +40,6 @@ public class LevelManager : MonoBehaviour
         {
             Instantiate(Resources.Load("Level" + currentLevel));
         }
-
+        levelText.text = "Level " + (currentLevel + 1).ToString();
     }
 }
