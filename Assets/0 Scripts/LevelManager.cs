@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         if (!testMode) OpenCurrentLevel();
-        
     }
 
 

@@ -7,7 +7,6 @@ using CnControls;
 
 public class Player : MonoBehaviour
 {
-    
     public GameObject panel;
     public static Player instance;
     public int speed;
@@ -16,7 +15,7 @@ public class Player : MonoBehaviour
     public float slide;
     [HideInInspector]
     public bool isSlide;
-    void Start()
+    void Awake()
     {
         instance = this;
     }
