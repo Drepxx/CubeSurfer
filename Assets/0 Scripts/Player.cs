@@ -8,6 +8,7 @@ using CnControls;
 public class Player : MonoBehaviour
 {
     public GameObject panel;
+    public GameObject levelText;
     public static Player instance;
     public int speed;
     public float horizontalSpeed;
@@ -45,5 +46,6 @@ public class Player : MonoBehaviour
     {
         isSlide = true;
         panel.SetActive(true);
+        levelText.SetActive(false);
     }
 }

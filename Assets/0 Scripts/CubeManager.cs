@@ -8,7 +8,7 @@ public class CubeManager : MonoBehaviour
     //[HideInInspector]
     public Texture[] texture = new Texture[3];
     public GameObject gameOver;
-    public List<GameObject> cubes = new();
+    public List<GameObject> cubes = new List<GameObject>();
     public static CubeManager instance;
    // [HideInInspector]
     public GameObject playerParent;
@@ -32,10 +32,6 @@ public class CubeManager : MonoBehaviour
             Player.instance.horizontalSpeed = 1;
             isObjectExit = false;
             count = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
         }
     }
     public void Color(GameObject textureCube)

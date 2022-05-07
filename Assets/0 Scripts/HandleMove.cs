@@ -24,7 +24,7 @@ public class HandleMove : MonoBehaviour
     }
     public void Move()
     {
-        seq.Append(transform.DOMoveX(750, 1f))
+        seq.Append(transform.DOMoveX(220, 1f))
             .Append(transform.DOMoveX(firstPosition, 1f)).SetLoops(-1);
     }
 }
